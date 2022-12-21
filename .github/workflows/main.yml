@@ -30,7 +30,7 @@ jobs:
       #  popd
     - name: Run Pre-deployment script
       shell: pwsh
-      run: Install-Module -Name Az -Scope CurrentUser -Confirm#
+      run: Install-Module -Name Az -Scope CurrentUser -Confirm
       
     - name: Login via Az module
       uses: azure/login@v1
