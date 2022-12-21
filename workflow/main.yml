@@ -6,25 +6,17 @@ jobs:
   build:
     runs-on: [self-hosted, Windows]
     steps:
-    - name: Check out repository
+    - name: Setup Python 3.9 Environment
+      uses: actions/setup-python@v1
       with:
-        repository: TeamKagoolLtd/azuredatabricks-github
-       # ref: v1.0
-      uses: actions/checkout@v2
-      
-    - name: Install Databricks cli
-      uses: microsoft/install-databricks-cli@v1.0.0
-      
-    - name: Login via Az module
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.KAGOOL_GITHUB_CREDENTIALS }}
-        enable-AzPSSession: true
-        
-    - name: Import Databricks notebooks    
-      uses: ./
-      with:
-        databricks-host: https://adb-2466824116276953.13.azuredatabricks.net
-        databricks-token: dapic0ad793e62f534c98a44957f0708a304-2
-        local-path: ./rajesh
-        remote-path: /Folder
+        python-version: 3.9
+     env:
+      AZURE_FUNCTIONAPP_PACKAGE_PATH: ./ # set this to the path to your web app project, defaults to the repository root
+
+    - name: 'Resolve Project Dependencies Using Pip'
+      shell: bash
+      run: |
+        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt --target=".python_packages/lib/site-packages"
+        popd
