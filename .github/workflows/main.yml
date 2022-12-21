@@ -17,3 +17,4 @@ jobs:
       shell: bash
       run: |
         pushd '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
+        python -m pip install --upgrade pip
