@@ -32,8 +32,8 @@ jobs:
     - name: Login via Az module
       uses: azure/login@v1
       with:
-          creds: ${{ secrets.KAGOOL_GITHUB_CREDENTIALS }}
-          enable-AzPSSession: true
+        creds: ${{ secrets.KAGOOL_GITHUB_CREDENTIALS }}
+        enable-AzPSSession: true
           
     - name: 'Run Azure Functions action'
       uses: Azure/functions-action@v1
