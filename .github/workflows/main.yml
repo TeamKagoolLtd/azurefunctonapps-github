@@ -16,9 +16,6 @@ jobs:
       #  architecture: x64
         
     - name: Check out repository
-      with:
-        repository: TeamKagoolLtd/azurefunctonapps-github
-       # ref: v1.0
       uses: actions/checkout@v2
    
  #   - name: 'Resolve Project Dependencies Using Pip'
