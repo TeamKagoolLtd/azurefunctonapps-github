@@ -7,7 +7,7 @@ env:
   AZURE_FUNCTIONAPP_NAME : fapp-kvelo-eus2-int-devops-01
 jobs:
   build:
-    runs-on: [self-hosted, Windows, X64]
+    runs-on: [self-hosted, Windows]
     steps:
     - name: Setup Python 3.7 Environments
       uses: actions/setup-python@v1
